@@ -5,23 +5,33 @@ This repository contains code used by our wearable intended to aid the visually 
 ### Core Components and Their Roles
 - **Arduino Uno**: The brain of our system.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/Arduino.jpeg)
 - **Ultrasonic Distance Sensor (HC-SR04)**: Used for initial object detection and proximity calculations. Provides a broader view of the immediate environment.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/HC-SR04.jpeg)
 - **Time of flight sensor (VL53L0X)**: Paired with the ultrasonic distance sensor for more accurate close range proximity and distance calculations. Excels in scenarios where the HC-SR04 struggles such as detection of soft surfaces and narrow objects. 
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/TOF.jpeg)
 - **PWM Vibration Motor Module**: To provide haptic feedback to the user. The strength and frequency will vary with object proximity, providing a strong but subtle alert when an obstacle lies ahead.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/VBMotor.jpeg)
 - **MPU6050(Gyroscope and Accelerometre)**: To detect changes in orientation and angular velocity, crucial for identifying a fall. It also has an accelerometer we intend to use to calculate an object's relative speed to the user to create more intuitive haptic feedback. Also comes with a temperature sensor we intend to use for refining distance calculations made using the HC-SR04, which vary depending on environmental temperarures.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/MPU.jpeg)
 - **SIM800L EVB**: Our projct will employ a SIM800L module to send SMS messages to an individual’s caretaker in the event that a fall is detected.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/SIM800L.jpeg)
 - **Power Source**: We chose a rechargeable 2000mAh Li-Po battery for portability and efficiency.
+
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/battery.jpeg)
 
 ### Functional Components.
 - **Charging module (TP4056)**: A module that enables safe battery recharging and power distribution to the rest of the circuit. Charges via a micro USB, but type C USB charging is possible thru a USB C-Micro USB connector.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/charger.jpeg)
 - **DC-DC boost converter (MT3608)**: This steps up the Li-Po battery’s 3.7V to 6V, connecting to the Arduino’s VIN pin to provide sufficient voltage and current for the Arduino and the rest of the sensors.
 
+    ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/boost%20converter.jpeg)
 - **P-Channel MOSFET (IRF9540N) + push button**: These two parts enable the system to be powered on or off, enabling power efficiency.
 
 ## HARDWARE CONNECTION GUIDE
@@ -83,3 +93,5 @@ This repository contains code used by our wearable intended to aid the visually 
 ### Summary
 The HC-SR04 will be used to detect objects greater than 2 meters away, the distance data it returns will be used also to calculate the incoming object's speed by measuring change in distance over time. The MPU6050's temperature sensor will provide temperature data to refine the speed calculations made using the HC-SR04's data. At distances of 2 meters or less, use the VL53L0X to perform distance calculations and utilize its data to calculate object speed. If the VL53L0X encounters an error or the object is out of range, fall back to the HC-SR04. In both cases, the relative speed of the object in the person's path (30 FOV) will be calculated, using the MPU6050 to get the wearer's speed to make the calculation. The vibration motor will have two types of vibration queues: pulses to indicate the incoming object's speed using the relative speed calculations, and vibration strength to convey proximity. If the object is stationary, convey this through a continuous vibration that grows stronger with proximity. The faster the object, the faster the pulses, the closer the object, the stronger the vibrations.
 Once a drastic change in angular acceleration, tilt and speed is detected over a small time window, identify this as a potential fall. Trigger the SIM800L to send an SMS alert to the wearer's caretaker to alert them of the fall. Send any object proximity data if available to give context to whether the fall was on their own accord, or as aresult of a collision with an object.
+
+  ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/IMG_20250718_220127_388.jpg)
