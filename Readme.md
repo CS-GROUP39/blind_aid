@@ -95,3 +95,8 @@ The HC-SR04 will be used to detect objects greater than 2 meters away, the dista
 Once a drastic change in angular acceleration, tilt and speed is detected over a small time window, identify this as a potential fall. Trigger the SIM800L to send an SMS alert to the wearer's caretaker to alert them of the fall. Send any object proximity data if available to give context to whether the fall was on their own accord, or as aresult of a collision with an object.
 
   ![imageAlt](https://github.com/CS-GROUP39/blind_aid/blob/main/public/IMG_20250718_220127_388.jpg)
+
+ ## NOTE:
+- Due to the limited number of resources available on the arduino uno, a lighter and optimized version of this script has been uploaded to the **v4_lite** branch of this repository. Therefore, the lite version shall be used in the prototype demo instead.
+
+- Note that this does not change the original design and concept behind our product. The lite version simply sacrifices some secondary functionality like logging. For further details, go checkout the Readme file on the v4_lite branch.
