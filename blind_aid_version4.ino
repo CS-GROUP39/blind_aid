@@ -5,6 +5,7 @@
 #include <SoftwareSerial.h>
 
 
+
 // HC-SR04 Pins
 #define TRIG_PIN 6
 #define ECHO_PIN 7
@@ -38,6 +39,8 @@ const float IMPACT_THRESHOLD = 29.4; // m/s²
 const float TILT_THRESHOLD = 45.0; // Degrees (post-fall orientation)
 const unsigned long FALL_WINDOW = 2000; 
 const unsigned long SMS_COOLDOWN = 60000; 
+
+
 
 // Variables
 float ax_offset = 0.0; // Replace with your MPU6050 calibration value
