@@ -4,8 +4,6 @@
 #include <Wire.h>
 #include <SoftwareSerial.h>
 
-
-
 // HC-SR04 Pins
 #define TRIG_PIN 6
 #define ECHO_PIN 7
