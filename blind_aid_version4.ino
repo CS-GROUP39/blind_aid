@@ -29,6 +29,8 @@ const float MAX_VIB_STRENGTH = 255.0;
 const float MIN_VIB_STRENGTH = 50.0; 
 const unsigned long SAMPLE_INTERVAL = 100; // Time between measurements (ms)
 
+
+
 // Fall Detection Constants
 const float FREE_FALL_THRESHOLD = 2.0; // m/s²
 const float IMPACT_THRESHOLD = 29.4; // m/s²
